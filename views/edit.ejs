@@ -1,0 +1,25 @@
+<%include ./partials/header%>
+    <div class='ui text main container'>
+        <div class='ui segment'>
+            <div class='ui huge header '>
+                Edit 
+            </div>
+            <form class='ui form' action='/blogs/<%=blog.id%>?_method=PUT' method='POST'>
+                <div class='field'>
+                    <label>Title</label>
+                    <input type='text' name='blog[title]' placeholder='Title' value='<%=blog.title%>'></input>
+                </div>
+                <div class='field'>
+                    <label>Image Url</label>
+                    <input type='text' name='blog[image]' placeholder='Image url' value='<%=blog.image%>'></input>
+                </div>
+                <div class='field'>
+                    <label>Blog Content</label>
+                    <textarea  name='blog[body]' placeholder='content here'><%=blog.body%></textarea>
+                </div>
+                <input type='submit' class='ui button primary blue'></input>
+            </form>
+        </div>
+    </div>
+
+<%include ./partials/footer%>

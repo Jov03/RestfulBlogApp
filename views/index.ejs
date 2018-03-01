@@ -1,0 +1,28 @@
+<% include ./partials/header%>
+    <div class='main ui text container'>
+        <div>
+            <h1 class='ui header'>Blog App</h1>
+            <div class='ui items segment'>
+                <%blogs.forEach(function(blog){%>
+                    <div class='ui item'>
+                        <h2>
+                            <%= blog.title%>
+                        </h2>
+                        <img src='<%=blog.image%>' class='ui image'></img>
+                        <p>
+                            <%=blog.body.substring(0,100)%>...</p>
+                        
+                        <a href='/blogs/<%=blog._id%>' class='ui inverted violet button '>
+                            Read More
+                            <i class='right chevron icon rightIconAlign'></i>
+                            
+                        </a> 
+                     
+                <%})%>
+
+            </div>
+        </div>
+    </div>
+
+
+    <%include ./partials/footer%>
