@@ -93,6 +93,6 @@ app.delete('/blogs/:id',function(req,res){
 });
 
 
-app.listen(process.env.PORT||8000,function(){
+app.listen(process.env.Port||8000,function(){
     console.log('Server has started');
 });
