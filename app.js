@@ -4,7 +4,7 @@ var express=require('express'),
     bodyParser=require('body-parser'),
     app=express();
 
-mongoose.connect(process.env.CUSTOMCONNSTR_MyConnectionString||'mongodb://localhost/blogapp');
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/blogapp');
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
