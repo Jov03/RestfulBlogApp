@@ -92,7 +92,8 @@ app.delete('/blogs/:id',function(req,res){
     })
 });
 
-
-app.listen(process.env.Port||8000,function(){
+var port = normalizePort(process.env.PORT || '8000');
+app.set('port', port);
+app.listen(port,function(){
     console.log('Server has started');
 });
