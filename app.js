@@ -1,10 +1,12 @@
 var express=require('express'),
     mongoose=require('mongoose'),
     methodOverride=require('method-override'),
-    bodyParser=require('body-parser'),
+    path=require('path'),
+    bodyParser=require('body-parser');
     app=express();
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/blogapp');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -92,8 +94,7 @@ app.delete('/blogs/:id',function(req,res){
     })
 });
 
-var port = normalizePort(process.env.PORT || '8000');
-app.set('port', port);
-app.listen(port,function(){
+
+app.listen(process.env.PORT||8000,function(){
     console.log('Server has started');
 });
