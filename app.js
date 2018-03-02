@@ -2,10 +2,20 @@ var express=require('express'),
     mongoose=require('mongoose'),
     methodOverride=require('method-override'),
     path=require('path'),
-    bodyParser=require('body-parser');
+    bodyParser=require('body-parser'),
+    env = require('dotenv/config'),
     app=express();
 
-mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/blogapp');
+
+mongoose.connect('mongodb://'+process.env.COSMOSDB_USERNAME+'.documents.azure.com:10255/jovblog?ssl=true', {
+    auth: {
+        user: process.env.COSMOSDB_USERNAME,
+        password: process.env.COSMOSDB_PASSWORD
+    }
+    })
+    .then(() => console.log('connection successful'))
+    .catch((err) => console.error(err));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 app.use(express.static('public'));
@@ -95,6 +105,6 @@ app.delete('/blogs/:id',function(req,res){
 });
 
 
-app.listen(process.env.PORT||8000,function(){
+app.listen(8008,function(){
     console.log('Server has started');
 });
